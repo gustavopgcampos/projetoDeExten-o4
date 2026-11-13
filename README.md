@@ -10,6 +10,8 @@ Versão do sistema original migrada para a stack obrigatória do Projeto de Exte
 4. Crie as tabelas: `npm run db:init`.
 5. Inicie: `npm run dev`.
 
+Para preencher o catálogo com dados de demonstração: `npm run db:seed`.
+
 O cadastro é feito diretamente em `/register`, com e-mail e senha. As senhas são armazenadas com hash bcrypt.
 
 ## Estrutura MVC
