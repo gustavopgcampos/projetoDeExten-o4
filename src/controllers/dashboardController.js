@@ -16,6 +16,7 @@ async function productData(body) {
   const detail = v.text(body.detail, 'o tipo do produto', 160);
   if (!categories.includes(body.category)) throw new v.FormError('Selecione uma categoria válida.');
   const unitValue = v.decimal(body.unitValue, 'O valor unitário', 9999999999.99);
+  if (unitValue <= 0) throw new v.FormError('O valor unitário deve ser maior que zero (mínimo R$ 0,01).');
   const status = body.status || 'ACTIVE';
   if (!['ACTIVE', 'INACTIVE'].includes(status)) throw new v.FormError('Selecione um status válido.');
   const producerId = body.producerId ? (await existing(Producer, body.producerId)).id : null;
@@ -95,6 +96,7 @@ exports.createBudget = budgetAction(async (req, res) => {
     for (const line of lines) {
       const product = await existing(Product, line.productId, { transaction });
       if (product.status !== 'ACTIVE') throw new v.FormError('O orçamento contém um produto inativo. Selecione outro item.');
+      if (!Number.isFinite(Number(product.unitValue)) || Number(product.unitValue) <= 0) throw new v.FormError('O produto selecionado está sem preço válido. Solicite a atualização ao administrador.');
       const cents = Math.round(Number(product.unitValue) * 100 * line.quantity * (1 + line.markup / 100));
       totalCents += cents;
       if (!Number.isSafeInteger(totalCents) || totalCents > 999999999999) throw new v.FormError('O valor total do orçamento excede o limite permitido.');

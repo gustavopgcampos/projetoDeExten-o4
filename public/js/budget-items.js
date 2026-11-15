@@ -47,7 +47,16 @@ function addBudgetItem() {
   }
   for (const field of [input, quantity, markup]) field.addEventListener('input', update);
   input.addEventListener('change', update);
-  row.append(input, quantity, markup, total);
+  for (const [title, field] of [['Produto', input], ['Quantidade', quantity], ['Margem (%)', markup], ['Total do item', total]]) {
+    const wrapper = document.createElement(field === total ? 'div' : 'label');
+    wrapper.className = 'flex min-w-0 flex-col gap-2';
+    const caption = document.createElement('span');
+    caption.className = 'text-xs font-medium text-zinc-600';
+    caption.textContent = title;
+    wrapper.append(caption, field);
+    row.appendChild(wrapper);
+  }
+  markup.title = 'Acréscimo percentual sobre o preço do produto. Ex.: 10 significa 10%.';
   document.getElementById('budget-items').appendChild(row);
   update(); input.focus();
 }

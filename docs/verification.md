@@ -1,5 +1,15 @@
 # Verificação — 15/11/2026
 
+## Confirmações posteriores pelo usuário em produção
+
+- Layout mobile e pesquisa de produtos funcionando.
+- Cadastro bloqueia senhas diferentes e aceita confirmação correta.
+- Login bloqueia senha errada; `/budgets` sem sessão exige login.
+- Conta COMMON cria e consulta orçamentos; URLs administrativas foram bloqueadas.
+- Orçamentos de uma conta não aparecem nas demais.
+
+Após essas verificações, foram corrigidos preço zero no cadastro/edição de produtos e rótulos visíveis Produto, Quantidade, Margem (%) e Total do item. A margem representa acréscimo sobre o preço. Produto legado com preço zero é rejeitado ao gerar orçamento até o administrador corrigir o preço. Os testes automatizados passaram; essas duas mudanças ainda precisam de deploy e reteste em produção.
+
 ## Execução realizada
 
 `npm test`: quatro arquivos de teste aprovados. A suíte `test/flows.test.js` chama os routers Express reais, incluindo os middlewares, os controllers, bcrypt e os templates EJS. Um adaptador em memória substitui apenas os models e as transações do MySQL. Não foram criados nem excluídos registros no Aiven.

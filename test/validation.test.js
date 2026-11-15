@@ -46,6 +46,23 @@ test('cadastro e edição rejeitam preço negativo antes da escrita', async () =
 test('fabricante inexistente é rejeitado', async () => {
   assert.ok((await invoke(controller.createProduct, { ...valid, producerId: productId })).error instanceof v.FormError);
 });
+test('cadastro e edição rejeitam preço zero e aceitam R$ 0,01', async () => {
+  writes = 0;
+  for (const handler of [controller.createProduct, controller.updateProduct]) {
+    for (const unitValue of ['0', '0.00', '0,00']) assert.ok((await invoke(handler, { ...valid, unitValue })).error instanceof v.FormError);
+  }
+  assert.equal(writes, 0);
+  for (const handler of [controller.createProduct, controller.updateProduct]) assert.equal((await invoke(handler, { ...valid, unitValue: '0.01' })).redirect, '/dashboard');
+  assert.equal(writes, 2);
+});
+test('orçamento rejeita produto legado com preço zero', async () => {
+  const previous = product.unitValue;
+  product.unitValue = '0.00'; writes = 0;
+  try {
+    const result = await invoke(controller.createBudget, { items: JSON.stringify([{ productId, quantity: 1, markup: 0 }]) });
+    assert.ok(result.error instanceof v.FormError); assert.equal(writes, 0);
+  } finally { product.unitValue = previous; }
+});
 test('cadastro e edição válidos gravam e retornam ao catálogo', async () => {
   writes = 0;
   for (const handler of [controller.createProduct, controller.updateProduct]) assert.equal((await invoke(handler, valid)).redirect, '/dashboard');
