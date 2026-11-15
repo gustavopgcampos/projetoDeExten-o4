@@ -36,4 +36,18 @@ O cadastro é feito diretamente em `/register`, com e-mail e senha. As senhas s�
 
 ## Deploy
 
+## Permissões de usuários
+
+O cadastro público cria contas `COMMON`, com acesso aos próprios orçamentos e perfil. Contas `ADMIN` também podem cadastrar, editar e excluir produtos e fabricantes. As rotas de gerenciamento verificam o papel no banco em cada requisição. O nome dos fabricantes continua sem campo de edição nas linhas da tabela.
+
+Administradores acessam `/dashboard/users` pelo menu Dashboard → Usuários para listar contas, alterar papéis e excluir contas sem orçamentos. A própria conta não pode ser excluída e o último administrador não pode ser rebaixado. Contas com orçamentos são preservadas para manter o histórico. Os formulários de gerenciamento de usuários exigem um token de sessão.
+
+A inicialização adiciona a coluna `role` caso não exista. Contas existentes recebem `COMMON`. Para promover uma conta já cadastrada, execute com as variáveis do banco configuradas:
+
+```bash
+npm run user:role -- email@exemplo.com ADMIN
+```
+
+Para remover a permissão administrativa, use `COMMON` no lugar de `ADMIN`. O comando funciona também conectado ao Aiven e não altera a senha da conta.
+
 No Render, use um Web Service Node, configure as variáveis do `.env`, conecte o repositório GitHub/GitLab e use `npm start` como comando de inicialização. O banco MySQL deve estar hospedado e acessível pela internet.

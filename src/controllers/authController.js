@@ -16,13 +16,13 @@ exports.login = formAction('/login', async (req, res) => {
   if (typeof req.body.password !== 'string' || !req.body.password) throw new v.FormError('Informe sua senha.');
   const user = await User.findOne({ where: { email } });
   if (!user || !(await bcrypt.compare(req.body.password, user.password))) throw new v.FormError('E-mail ou senha inválidos.');
-  await signIn(req, user); res.redirect('/dashboard');
+  await signIn(req, user); res.redirect(user.role === 'ADMIN' ? '/dashboard' : '/budgets');
 });
 exports.register = formAction('/register', async (req, res) => {
   const email = v.email(req.body.email);
   const password = v.password(req.body.password);
   if (await User.findOne({ where: { email } })) throw new v.FormError('Este e-mail já está cadastrado.');
-  const user = await User.create({ email, password: await bcrypt.hash(password, 12) });
-  await signIn(req, user); res.redirect('/dashboard');
+  const user = await User.create({ email, password: await bcrypt.hash(password, 12), role: 'COMMON' });
+  await signIn(req, user); res.redirect('/budgets');
 });
 exports.logout = (req, res, next) => req.session.destroy(error => error ? next(error) : res.redirect('/'));
