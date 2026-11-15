@@ -1,0 +1,27 @@
+/* Ajustes compartilhados para telas pequenas, sem alterar as tabelas no desktop. */
+main, main form, main label { min-width: 0; }
+#site-header details[open] > div { max-height: calc(100dvh - 76px); overflow-y: auto; }
+#site-header summary { min-width: 44px; min-height: 44px; display: grid; place-items: center; }
+#product-modal { overflow-y: auto; }
+#product-modal > div { max-height: calc(100dvh - 32px); overflow-y: auto; }
+.auth-page { min-height: 100dvh; }
+.auth-card { max-width: 100%; }
+#contato { overflow-wrap: anywhere; }
+@media (max-width: 639px) {
+  main > section { min-width: 0; }
+  main input:not([type="checkbox"]):not([type="hidden"]), main select, main textarea { font-size: 16px; min-width: 0; }
+  main form[method="get"] { width: 100%; }
+  main form[method="get"] input { width: 100%; flex: 1; }
+  #product-modal { align-items: flex-start; padding: 16px; }
+  .auth-page { padding: 16px; }
+  .auth-card { padding: 24px; }
+  main h1 { overflow-wrap: anywhere; }
+  main .grid-cols-4 > * { min-width: 0; overflow-wrap: anywhere; }
+  main .overflow-x-auto { -webkit-overflow-scrolling: touch; }
+  #site-header nav { gap: 12px; }
+  #site-header nav > a img { max-width: 176px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  [class*="carousel"] { animation: none !important; }
+}
