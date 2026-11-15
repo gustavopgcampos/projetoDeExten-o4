@@ -1,4 +1,4 @@
-document.querySelectorAll('input[name="password"]').forEach(input => {
+document.querySelectorAll('input[name="password"], input[name="confirmPassword"]').forEach(input => {
   const wrapper = document.createElement('span');
   wrapper.className = 'password-field';
   input.parentNode.insertBefore(wrapper, input);

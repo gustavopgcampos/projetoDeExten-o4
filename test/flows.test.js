@@ -74,12 +74,16 @@ test('fluxos completos pelas rotas reais, com dados isolados', async () => {
   assert.equal((await request(visitor, 'GET', '/register')).status, 200);
   assert.equal((await request(visitor, 'GET', '/dashboard')).destination, '/login?auth=required');
   const common = client();
-  assert.equal((await request(common, 'POST', '/register', { email: 'teste@example.com', password: 'Password123!', role: 'ADMIN' })).destination, '/budgets');
+  for (const confirmPassword of [undefined, '', 'Different123!']) {
+    assert.equal((await request(common, 'POST', '/register', { email: 'teste@example.com', password: 'Password123!', confirmPassword })).destination, '/register');
+    assert.equal(stores.User.length, 0, 'Confirmação inválida não cria usuário');
+  }
+  assert.equal((await request(common, 'POST', '/register', { email: 'teste@example.com', password: 'Password123!', confirmPassword: 'Password123!', role: 'ADMIN' })).destination, '/budgets');
   const account = stores.User[0];
   assert.equal(account.role, 'COMMON');
   assert.notEqual(account.password, 'Password123!');
   assert.ok(await bcrypt.compare('Password123!', account.password));
-  assert.equal((await request(common, 'POST', '/register', { email: account.email, password: 'Password123!' })).destination, '/register');
+  assert.equal((await request(common, 'POST', '/register', { email: account.email, password: 'Password123!', confirmPassword: 'Password123!' })).destination, '/register');
   const admin = client();
   const adminAccount = await models.User.create({ email: 'admin@example.com', password: await bcrypt.hash('Password123!', 4), role: 'ADMIN' });
   admin.session.userId = adminAccount.id;

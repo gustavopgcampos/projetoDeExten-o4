@@ -21,6 +21,7 @@ exports.login = formAction('/login', async (req, res) => {
 exports.register = formAction('/register', async (req, res) => {
   const email = v.email(req.body.email);
   const password = v.password(req.body.password);
+  if (password !== req.body.confirmPassword) throw new v.FormError('A confirmação da senha não confere. Digite a mesma senha nos dois campos.');
   if (await User.findOne({ where: { email } })) throw new v.FormError('Este e-mail já está cadastrado.');
   const user = await User.create({ email, password: await bcrypt.hash(password, 12), role: 'COMMON' });
   await signIn(req, user); res.redirect('/budgets');
