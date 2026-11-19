@@ -1,29 +1,79 @@
 <main class="mx-auto min-h-screen max-w-6xl px-6 pb-12 pt-28">
   <section class="overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm">
     <div class="border-b border-zinc-200 px-5 py-4">
-      <h1 class="text-lg font-semibold">Usuários</h1>
-      <p class="text-sm text-zinc-500">Gerencie as permissões de acesso. Contas com orçamentos são preservadas para manter o histórico.</p>
+      <h1 class="text-lg font-semibold">
+        Usuários
+      </h1>
+      <p class="text-sm text-zinc-500">
+        Gerencie as permissões de acesso. Contas com orçamentos são preservadas para manter o histórico.
+      </p>
     </div>
-    <div class="overflow-x-auto"><table class="w-full min-w-[700px] text-sm">
-      <thead class="bg-zinc-100 text-left text-xs uppercase text-zinc-600"><tr><th class="px-5 py-3">E-mail</th><th class="px-5 py-3">Criado em</th><th class="px-5 py-3">Permissão</th><th class="px-5 py-3">Ações</th></tr></thead>
-      <tbody class="divide-y divide-zinc-100">
-      <% users.forEach(user => { %>
-        <tr>
-          <td class="px-5 py-4"><%= user.email %><% if (user.id === currentUser.id) { %><span class="ml-2 text-xs text-zinc-500">Você</span><% } %></td>
-          <td class="px-5 py-4"><%= new Date(user.createdAt).toLocaleDateString('pt-BR') %></td>
-          <td class="px-5 py-4"><form action="/dashboard/users/<%= user.id %>/role" method="post" class="flex gap-2">
-            <input type="hidden" name="_csrf" value="<%= usersCsrf %>">
-            <select name="role" aria-label="Permissão de <%= user.email %>" class="rounded-md border border-zinc-200 px-3 py-2">
-              <option value="COMMON" <%= user.role === 'COMMON' ? 'selected' : '' %>>Usuário comum</option>
-              <option value="ADMIN" <%= user.role === 'ADMIN' ? 'selected' : '' %>>Administrador</option>
-            </select><button class="rounded-md bg-[#EE4136] px-3 py-2 text-white">Salvar</button>
-          </form></td>
-          <td class="px-5 py-4"><% if (user.id !== currentUser.id) { %><form action="/dashboard/users/<%= user.id %>/delete" method="post" onsubmit="return confirm('Excluir esta conta? Esta ação não pode ser desfeita.')">
-            <input type="hidden" name="_csrf" value="<%= usersCsrf %>"><button class="rounded-md border border-red-200 px-3 py-2 text-red-600 hover:bg-red-50">Excluir</button>
-          </form><% } else { %><span class="text-xs text-zinc-500">Conta em uso</span><% } %></td>
-        </tr>
-      <% }) %>
-      </tbody>
-    </table></div>
+    <div class="overflow-x-auto">
+      <table class="w-full min-w-[700px] text-sm">
+        <thead class="bg-zinc-100 text-left text-xs uppercase text-zinc-600">
+          <tr>
+            <th class="px-5 py-3">
+              E-mail
+            </th>
+            <th class="px-5 py-3">
+              Criado em
+            </th>
+            <th class="px-5 py-3">
+              Permissão
+            </th>
+            <th class="px-5 py-3">
+              Ações
+            </th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-zinc-100">
+          <% users.forEach(user => { %>
+            <tr>
+              <td class="px-5 py-4">
+                <%= user.email %>
+                <% if (user.id === currentUser.id) { %>
+                  <span class="ml-2 text-xs text-zinc-500">
+                    Você
+                  </span>
+                <% } %>
+              </td>
+              <td class="px-5 py-4">
+                <%= new Date(user.createdAt).toLocaleDateString('pt-BR') %>
+              </td>
+              <td class="px-5 py-4">
+                <form action="/dashboard/users/<%= user.id %>/role" method="post" class="flex gap-2">
+                  <input type="hidden" name="_csrf" value="<%= usersCsrf %>">
+                  <select name="role" aria-label="Permissão de <%= user.email %>" class="rounded-md border border-zinc-200 px-3 py-2">
+                    <option value="COMMON" <%= user.role === 'COMMON' ? 'selected' : '' %>>
+                      Usuário comum
+                    </option>
+                    <option value="ADMIN" <%= user.role === 'ADMIN' ? 'selected' : '' %>>
+                      Administrador
+                    </option>
+                  </select>
+                  <button class="rounded-md bg-[#EE4136] px-3 py-2 text-white">
+                    Salvar
+                  </button>
+                </form>
+              </td>
+              <td class="px-5 py-4">
+                <% if (user.id !== currentUser.id) { %>
+                  <form action="/dashboard/users/<%= user.id %>/delete" method="post" onsubmit="return confirm('Excluir esta conta? Esta ação não pode ser desfeita.')">
+                    <input type="hidden" name="_csrf" value="<%= usersCsrf %>">
+                    <button class="rounded-md border border-red-200 px-3 py-2 text-red-600 hover:bg-red-50">
+                      Excluir
+                    </button>
+                  </form>
+                <% } else { %>
+                  <span class="text-xs text-zinc-500">
+                    Conta em uso
+                  </span>
+                <% } %>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
   </section>
 </main>

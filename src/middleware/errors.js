@@ -9,8 +9,12 @@ function messageFor(error) {
 }
 function formAction(destination, action) {
   return async (req, res, next) => {
-    try { await action(req, res); }
-    catch (error) { res.locals.errorDestination = destination; next(error); }
+    try {
+      await action(req, res);
+    } catch (error) {
+      res.locals.errorDestination = destination;
+      next(error);
+    }
   };
 }
 function errorHandler(error, req, res, next) {
@@ -21,11 +25,19 @@ function errorHandler(error, req, res, next) {
     req.flash('error', message);
     return res.redirect(res.locals.errorDestination);
   }
-  const status = error.expose ? error.status : (error.type === 'entity.too.large' ? 413 : error.type === 'entity.parse.failed' ? 400 : 500);
+  const status = error.expose ? error.status : error.type === 'entity.too.large' ? 413 : error.type === 'entity.parse.failed' ? 400 : 500;
   return res.status(status).render('error', {
-    title: status === 404 ? 'Registro não encontrado' : 'Não foi possível concluir', message,
-    currentUser: req.session?.userEmail ? { email: req.session.userEmail } : null,
-    success: [], error: [],
+    title: status === 404 ? 'Registro não encontrado' : 'Não foi possível concluir',
+    message,
+    currentUser: req.session?.userEmail ? {
+      email: req.session.userEmail
+    } : null,
+    success: [],
+    error: []
   });
 }
-module.exports = { formAction, errorHandler, messageFor };
+module.exports = {
+  formAction,
+  errorHandler,
+  messageFor
+};

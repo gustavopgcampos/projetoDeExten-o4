@@ -1,5 +1,144 @@
 <main>
-  <section class="mt-29 w-full"><div class="mx-auto max-w-full px-6"><div class="relative"><img class="h-[550px] w-full object-cover" src="/possiblebackground.jpg" alt=""><div class="absolute inset-0 bg-black/60"></div><div class="absolute inset-0 flex flex-col items-center justify-center px-4 text-center text-white"><h1 class="text-4xl font-bold md:text-5xl">Descubra o Futuro com a MMVL/Telecon</h1><p class="mt-4 text-xl opacity-90 md:text-2xl">Conexão com garantia de qualidade e modernidade</p></div></div></div></section>
-  <section class="mt-25 w-full"><div class="mx-auto max-w-full bg-[rgb(240,237,237)] px-6 text-center"><div class="pt-10 text-3xl font-semibold">As melhores soluções em telecomunicações e tecnologia da informação é com a <span class="mt-3 block font-bold text-[rgb(238,65,54)]">MMVL/Telecon</span></div><div class="grid gap-12 p-10 md:grid-cols-3"><% const cards=[['Referência de Qualidade e Tecnologia','Atuamos no seguimento de conectividade, levando à nossos clientes o que há de mais moderno; com responsabilidade e compromisso.'],['Profissionais Capacitados','Nós desenvolvemos e implantamos projetos de infraestrutura de rede de dados seguindo padrões de qualidade e normas internacionais.'],['Personalização de Projetos','Desenvolvemos projetos personalizados de acordo com as necessidades específicas do seu negócio.']]; cards.forEach(card=>{ %><div class="rounded-2xl border border-zinc-400 p-5 text-left shadow-2xl"><div class="flex h-14 w-14 items-center justify-center rounded-full bg-red-100 text-2xl text-red-500">♢</div><h3 class="mb-3 mt-5 text-lg font-semibold"><%= card[0] %></h3><p class="leading-relaxed text-gray-600"><%= card[1] %></p></div><% }) %></div><div class="pb-10 text-3xl font-semibold">Conheça alguns dos nossos clientes<div class="mt-10 overflow-hidden"><div class="flex w-max animate-[carousel_35s_linear_infinite] gap-4"><% const logos=['logohuawei.png','logounicamp.png','logo-cristalia.png','logoambev.png','gprsistemaslogo.png','smcclogo.png','clinicateracamp.png']; for(let repeat=0;repeat<4;repeat++) logos.forEach(logo=>{ %><div class="flex h-30 w-50 items-center justify-center rounded-4xl bg-white shadow-xl"><img src="/<%= logo %>" class="h-[90px] w-[90px] object-contain"></div><% }) %></div></div></div></div></section>
-  <section id="contato" class="w-full py-13"><div class="mx-auto grid max-w-6xl items-stretch gap-12 px-6 md:grid-cols-2"><div class="space-y-4 text-center md:text-left"><h2 class="text-4xl font-semibold">Entre em contato</h2><div class="text-3xl font-bold leading-relaxed text-[rgb(238,65,54)]"><p>(19) 3264-5111</p><p>(19) 98195-2130</p></div><div class="mt-11 space-y-1 text-gray-700"><p><b class="text-[rgb(238,65,54)]">Geral:</b> mmvl@mmvltelecom.com.br</p><p><b class="text-[rgb(238,65,54)]">Atendimento:</b> atendimento@mmvltelecom.com.br</p><p><b class="text-[rgb(238,65,54)]">Jurídico:</b> juridico@mmvltelecom.com.br</p><p><b class="text-[rgb(238,65,54)]">Financeiro:</b> financeiro@mmvltelecom.com.br</p><p><b class="text-[rgb(238,65,54)]">Compras:</b> compras@mmvltelecom.com.br</p></div></div><form class="space-y-4"><input class="w-full border border-gray-300 px-4 py-3 focus:border-[rgb(238,65,54)] focus:outline-none" placeholder="Digite seu nome"><input type="email" class="w-full border border-gray-300 px-4 py-3 focus:border-[rgb(238,65,54)] focus:outline-none" placeholder="Digite seu e-mail"><input class="w-full border border-gray-300 px-4 py-3 focus:border-[rgb(238,65,54)] focus:outline-none" placeholder="Digite o assunto"><textarea rows="7" class="w-full resize-none border border-gray-300 px-4 py-3 focus:border-[rgb(238,65,54)] focus:outline-none" placeholder="Digite sua mensagem"></textarea><div class="flex justify-end"><button class="bg-[rgb(238,65,54)] px-8 py-3 text-white hover:bg-[rgb(193,48,38)]">ENVIAR</button></div></form></div></section>
+  <section class="mt-29 w-full">
+    <div class="mx-auto max-w-full px-6">
+      <div class="relative">
+        <img class="h-[550px] w-full object-cover" src="/possiblebackground.jpg" alt="">
+        <div class="absolute inset-0 bg-black/60">
+        </div>
+        <div class="absolute inset-0 flex flex-col items-center justify-center px-4 text-center text-white">
+          <h1 class="text-4xl font-bold md:text-5xl">
+            Descubra o Futuro com a MMVL/Telecon
+          </h1>
+          <p class="mt-4 text-xl opacity-90 md:text-2xl">
+            Conexão com garantia de qualidade e modernidade
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="mt-25 w-full">
+    <div class="mx-auto max-w-full bg-[rgb(240,237,237)] px-6 text-center">
+      <div class="pt-10 text-3xl font-semibold">
+        As melhores soluções em telecomunicações e tecnologia da informação é com a
+        <span class="mt-3 block font-bold text-[rgb(238,65,54)]">
+          MMVL/Telecon
+        </span>
+      </div>
+      <div class="grid gap-12 p-10 md:grid-cols-3">
+        <%
+          const cards = [
+            [
+              'Referência de Qualidade e Tecnologia',
+              'Atuamos no seguimento de conectividade, levando à nossos clientes o que há de mais moderno; com responsabilidade e compromisso.'
+            ],
+            [
+              'Profissionais Capacitados',
+              'Nós desenvolvemos e implantamos projetos de infraestrutura de rede de dados seguindo padrões de qualidade e normas internacionais.'
+            ],
+            [
+              'Personalização de Projetos',
+              'Desenvolvemos projetos personalizados de acordo com as necessidades específicas do seu negócio.'
+            ]
+          ];
+          cards.forEach(card => {
+        %>
+          <div class="rounded-2xl border border-zinc-400 p-5 text-left shadow-2xl">
+            <div class="flex h-14 w-14 items-center justify-center rounded-full bg-red-100 text-2xl text-red-500">
+              ♢
+            </div>
+            <h3 class="mb-3 mt-5 text-lg font-semibold">
+              <%= card[0] %>
+            </h3>
+            <p class="leading-relaxed text-gray-600">
+              <%= card[1] %>
+            </p>
+          </div>
+        <% }) %>
+      </div>
+      <div class="pb-10 text-3xl font-semibold">
+        Conheça alguns dos nossos clientes
+        <div class="mt-10 overflow-hidden">
+          <div class="flex w-max animate-[carousel_35s_linear_infinite] gap-4">
+            <%
+              const logos = [
+                'logohuawei.png',
+                'logounicamp.png',
+                'logo-cristalia.png',
+                'logoambev.png',
+                'gprsistemaslogo.png',
+                'smcclogo.png',
+                'clinicateracamp.png'
+              ];
+              for (let repeat = 0; repeat < 4; repeat++) logos.forEach(logo => {
+            %>
+              <div class="flex h-30 w-50 items-center justify-center rounded-4xl bg-white shadow-xl">
+                <img src="/<%= logo %>" class="h-[90px] w-[90px] object-contain">
+              </div>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="contato" class="w-full py-13">
+    <div class="mx-auto grid max-w-6xl items-stretch gap-12 px-6 md:grid-cols-2">
+      <div class="space-y-4 text-center md:text-left">
+        <h2 class="text-4xl font-semibold">
+          Entre em contato
+        </h2>
+        <div class="text-3xl font-bold leading-relaxed text-[rgb(238,65,54)]">
+          <p>
+            (19) 3264-5111
+          </p>
+          <p>
+            (19) 98195-2130
+          </p>
+        </div>
+        <div class="mt-11 space-y-1 text-gray-700">
+          <p>
+            <b class="text-[rgb(238,65,54)]">
+              Geral:
+            </b>
+            mmvl@mmvltelecom.com.br
+          </p>
+          <p>
+            <b class="text-[rgb(238,65,54)]">
+              Atendimento:
+            </b>
+            atendimento@mmvltelecom.com.br
+          </p>
+          <p>
+            <b class="text-[rgb(238,65,54)]">
+              Jurídico:
+            </b>
+            juridico@mmvltelecom.com.br
+          </p>
+          <p>
+            <b class="text-[rgb(238,65,54)]">
+              Financeiro:
+            </b>
+            financeiro@mmvltelecom.com.br
+          </p>
+          <p>
+            <b class="text-[rgb(238,65,54)]">
+              Compras:
+            </b>
+            compras@mmvltelecom.com.br
+          </p>
+        </div>
+      </div>
+      <form class="space-y-4">
+        <input class="w-full border border-gray-300 px-4 py-3 focus:border-[rgb(238,65,54)] focus:outline-none" placeholder="Digite seu nome">
+        <input type="email" class="w-full border border-gray-300 px-4 py-3 focus:border-[rgb(238,65,54)] focus:outline-none" placeholder="Digite seu e-mail">
+        <input class="w-full border border-gray-300 px-4 py-3 focus:border-[rgb(238,65,54)] focus:outline-none" placeholder="Digite o assunto">
+        <textarea rows="7" class="w-full resize-none border border-gray-300 px-4 py-3 focus:border-[rgb(238,65,54)] focus:outline-none" placeholder="Digite sua mensagem">
+        </textarea>
+        <div class="flex justify-end">
+          <button class="bg-[rgb(238,65,54)] px-8 py-3 text-white hover:bg-[rgb(193,48,38)]">
+            ENVIAR
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
 </main>

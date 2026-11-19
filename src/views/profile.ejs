@@ -1,1 +1,33 @@
-<main class="mx-auto min-h-screen max-w-6xl px-6 pb-12 pt-28"><section class="rounded-lg border border-zinc-200 bg-white shadow-sm"><div class="border-b border-zinc-200 px-5 py-4"><h1 class="text-xl font-semibold text-zinc-950">Meu Perfil</h1><p class="mt-1 text-sm text-zinc-500"><%= user.email %></p></div><form action="/profile/password" method="post" class="space-y-5 px-5 py-5"><div class="grid gap-5 md:grid-cols-3"><label class="flex flex-col gap-2 text-sm text-zinc-600">Senha atual<input type="password" name="currentPassword" required class="rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-[rgb(238,65,54)] focus:ring-1 focus:ring-[rgb(238,65,54)]"></label><label class="flex flex-col gap-2 text-sm text-zinc-600">Nova senha<input type="password" name="newPassword" required minlength="8" class="rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-[rgb(238,65,54)] focus:ring-1 focus:ring-[rgb(238,65,54)]"></label><label class="flex flex-col gap-2 text-sm text-zinc-600">Confirmar nova senha<input type="password" name="confirmPassword" required minlength="8" class="rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-[rgb(238,65,54)] focus:ring-1 focus:ring-[rgb(238,65,54)]"></label></div><div class="flex justify-end"><button class="rounded-md bg-[rgb(238,65,54)] px-4 py-2 text-sm font-medium text-white hover:bg-[rgb(193,48,38)]">Alterar senha</button></div></form></section></main>
+<main class="mx-auto min-h-screen max-w-6xl px-6 pb-12 pt-28">
+  <section class="rounded-lg border border-zinc-200 bg-white shadow-sm">
+    <div class="border-b border-zinc-200 px-5 py-4">
+      <h1 class="text-xl font-semibold text-zinc-950">
+        Meu Perfil
+      </h1>
+      <p class="mt-1 text-sm text-zinc-500">
+        <%= user.email %>
+      </p>
+    </div>
+    <form action="/profile/password" method="post" class="space-y-5 px-5 py-5">
+      <div class="grid gap-5 md:grid-cols-3">
+        <label class="flex flex-col gap-2 text-sm text-zinc-600">
+          Senha atual
+          <input type="password" name="currentPassword" required class="rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-[rgb(238,65,54)] focus:ring-1 focus:ring-[rgb(238,65,54)]">
+        </label>
+        <label class="flex flex-col gap-2 text-sm text-zinc-600">
+          Nova senha
+          <input type="password" name="newPassword" required minlength="8" class="rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-[rgb(238,65,54)] focus:ring-1 focus:ring-[rgb(238,65,54)]">
+        </label>
+        <label class="flex flex-col gap-2 text-sm text-zinc-600">
+          Confirmar nova senha
+          <input type="password" name="confirmPassword" required minlength="8" class="rounded-md border border-zinc-300 px-3 py-2 text-sm outline-none focus:border-[rgb(238,65,54)] focus:ring-1 focus:ring-[rgb(238,65,54)]">
+        </label>
+      </div>
+      <div class="flex justify-end">
+        <button class="rounded-md bg-[rgb(238,65,54)] px-4 py-2 text-sm font-medium text-white hover:bg-[rgb(193,48,38)]">
+          Alterar senha
+        </button>
+      </div>
+    </form>
+  </section>
+</main>

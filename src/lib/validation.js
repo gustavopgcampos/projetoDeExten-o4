@@ -1,11 +1,15 @@
 class FormError extends Error {
-  constructor(message, status = 400) { super(message); this.status = status; this.expose = true; }
+  constructor(message, status = 400) {
+    super(message);
+    this.status = status;
+    this.expose = true;
+  }
 }
 function text(value, label, max, optional = false) {
   if (value == null && optional) return '';
   if (typeof value !== 'string') throw new FormError(`Informe ${label}.`);
   const result = value.trim();
-  if ((!optional && !result) || result.length > max) throw new FormError(`Informe ${label} com até ${max} caracteres.`);
+  if (!optional && !result || result.length > max) throw new FormError(`Informe ${label} com até ${max} caracteres.`);
   return result;
 }
 function decimal(value, label, max) {
@@ -28,4 +32,11 @@ function password(value) {
   if (typeof value !== 'string' || value.length < 8 || Buffer.byteLength(value, 'utf8') > 72) throw new FormError('A senha deve ter pelo menos 8 caracteres e no máximo 72 bytes.');
   return value;
 }
-module.exports = { FormError, text, decimal, id, email, password };
+module.exports = {
+  FormError,
+  text,
+  decimal,
+  id,
+  email,
+  password
+};

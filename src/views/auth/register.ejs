@@ -1,2 +1,30 @@
-<main class="auth-page"><form class="auth-card" action="/register" method="post"><img src="/mmvlteleconlogo.png" alt="MMVL Telecon" class="auth-logo"><h1>Criar conta</h1><p>Cadastre-se para acessar o sistema.</p><label>E-mail<input type="email" name="email" autocomplete="email" required></label><label>Senha<input type="password" name="password" autocomplete="new-password" minlength="8" required></label><label>Confirmar senha<input type="password" name="confirmPassword" autocomplete="new-password" minlength="8" required></label><button class="button full">Cadastrar</button><a href="/login" class="center-link">Já possui conta? Entrar</a></form></main>
+<main class="auth-page">
+  <form class="auth-card" action="/register" method="post">
+    <img src="/mmvlteleconlogo.png" alt="MMVL Telecon" class="auth-logo">
+    <h1>
+      Criar conta
+    </h1>
+    <p>
+      Cadastre-se para acessar o sistema.
+    </p>
+    <label>
+      E-mail
+      <input type="email" name="email" autocomplete="email" required>
+    </label>
+    <label>
+      Senha
+      <input type="password" name="password" autocomplete="new-password" minlength="8" required>
+    </label>
+    <label>
+      Confirmar senha
+      <input type="password" name="confirmPassword" autocomplete="new-password" minlength="8" required>
+    </label>
+    <button class="button full">
+      Cadastrar
+    </button>
+    <a href="/login" class="center-link">
+      Já possui conta? Entrar
+    </a>
+  </form>
+</main>
 <%- include('../partials/password-toggle') %>

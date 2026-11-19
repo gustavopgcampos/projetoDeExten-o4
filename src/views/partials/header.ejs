@@ -1,38 +1,101 @@
 <header id="site-header" class="fixed left-0 top-0 z-50 w-full transition-all duration-300">
   <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6" aria-label="Navegação principal">
-    <a href="/"><img class="w-44 sm:w-60" src="/mmvlteleconlogo.png" alt="MMVL Telecon Logo"></a>
+    <a href="/">
+      <img class="w-44 sm:w-60" src="/mmvlteleconlogo.png" alt="MMVL Telecon Logo">
+    </a>
     <% if (currentUser) { %>
       <div class="hidden items-center gap-6 text-sm text-[#EE4136] md:flex">
         <% if (currentUser.role === 'ADMIN') { %>
           <div class="group relative">
-            <a href="/dashboard" class="inline-flex items-center gap-1 hover:text-[#c13026]">Dashboard <span aria-hidden="true">⌄</span></a>
+            <a href="/dashboard" class="inline-flex items-center gap-1 hover:text-[#c13026]">
+              Dashboard
+              <span aria-hidden="true">
+                ⌄
+              </span>
+            </a>
             <div class="invisible absolute left-0 top-full z-50 min-w-44 rounded-md border border-zinc-200 bg-white py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
               <% [['/dashboard','Itens'],['/dashboard/producers','Fabricantes'],['/dashboard/users','Usuários']].forEach(([url,label]) => { %>
-                <a href="<%= url %>" class="block px-4 py-2 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#EE4136]"><%= label %></a>
+                <a href="<%= url %>" class="block px-4 py-2 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#EE4136]">
+                  <%= label %>
+                </a>
               <% }) %>
             </div>
           </div>
         <% } %>
-        <a href="/budgets" class="hover:text-[#c13026]">Orçamentos</a>
-        <a href="/profile" class="hover:text-[#c13026]">Meu Perfil</a>
-        <form action="/logout" method="post"><button class="rounded-full bg-[rgb(238,65,54)] px-4 py-1 text-white hover:bg-[rgb(193,48,38)]">Sair</button></form>
+        <a href="/budgets" class="hover:text-[#c13026]">
+          Orçamentos
+        </a>
+        <a href="/profile" class="hover:text-[#c13026]">
+          Meu Perfil
+        </a>
+        <form action="/logout" method="post">
+          <button class="rounded-full bg-[rgb(238,65,54)] px-4 py-1 text-white hover:bg-[rgb(193,48,38)]">
+            Sair
+          </button>
+        </form>
       </div>
     <% } else { %>
       <div class="hidden items-center gap-6 text-sm md:flex">
-        <a href="/" class="hover:text-[#EE4136]">Empresa</a><a href="/" class="hover:text-[#EE4136]">Serviços</a><a href="/#contato" class="hover:text-[#EE4136]">Contato</a><a href="/login" class="rounded-full bg-[rgb(238,65,54)] px-4 py-1 text-white">Login</a>
+        <a href="/" class="hover:text-[#EE4136]">
+          Empresa
+        </a>
+        <a href="/" class="hover:text-[#EE4136]">
+          Serviços
+        </a>
+        <a href="/#contato" class="hover:text-[#EE4136]">
+          Contato
+        </a>
+        <a href="/login" class="rounded-full bg-[rgb(238,65,54)] px-4 py-1 text-white">
+          Login
+        </a>
       </div>
     <% } %>
     <details class="md:hidden">
-      <summary class="cursor-pointer list-none text-2xl text-[#EE4136]" aria-label="Abrir menu de navegação">☰</summary>
+      <summary class="cursor-pointer list-none text-2xl text-[#EE4136]" aria-label="Abrir menu de navegação">
+        ☰
+      </summary>
       <div class="absolute left-0 top-full flex w-full flex-col gap-4 border-t border-zinc-100 bg-white px-6 pb-5 pt-4 shadow-lg">
         <% if (currentUser) { %>
-          <% if (currentUser.role === 'ADMIN') { %><a href="/dashboard">Dashboard - Itens</a><a href="/dashboard/producers">Dashboard - Fabricantes</a><a href="/dashboard/users">Dashboard - Usuários</a><% } %>
-          <a href="/budgets">Orçamentos</a><a href="/profile">Meu Perfil</a><form action="/logout" method="post"><button class="rounded-full bg-[rgb(238,65,54)] px-5 py-1 text-white">Sair</button></form>
+          <% if (currentUser.role === 'ADMIN') { %>
+            <a href="/dashboard">
+              Dashboard - Itens
+            </a>
+            <a href="/dashboard/producers">
+              Dashboard - Fabricantes
+            </a>
+            <a href="/dashboard/users">
+              Dashboard - Usuários
+            </a>
+          <% } %>
+          <a href="/budgets">
+            Orçamentos
+          </a>
+          <a href="/profile">
+            Meu Perfil
+          </a>
+          <form action="/logout" method="post">
+            <button class="rounded-full bg-[rgb(238,65,54)] px-5 py-1 text-white">
+              Sair
+            </button>
+          </form>
         <% } else { %>
-          <a href="/">Empresa</a><a href="/">Serviços</a><a href="/#contato">Contato</a><a href="/login" class="rounded-md bg-[rgb(238,65,54)] px-4 py-2 text-center text-white">Login</a>
+          <a href="/">
+            Empresa
+          </a>
+          <a href="/">
+            Serviços
+          </a>
+          <a href="/#contato">
+            Contato
+          </a>
+          <a href="/login" class="rounded-md bg-[rgb(238,65,54)] px-4 py-2 text-center text-white">
+            Login
+          </a>
         <% } %>
       </div>
     </details>
   </nav>
 </header>
-<script>window.addEventListener('scroll',()=>document.getElementById('site-header').classList.toggle('bg-white/95',scrollY>10));</script>
+<script>
+  window.addEventListener('scroll', () => document.getElementById('site-header').classList.toggle('bg-white/95', scrollY > 10));
+</script>
