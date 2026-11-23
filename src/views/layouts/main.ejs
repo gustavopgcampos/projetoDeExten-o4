@@ -1,69 +1,69 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-      <%= title %>
-      | MMVL Telecon
-    </title>
-    <script src="https://cdn.tailwindcss.com">
-    </script>
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: Arial,sans-serif;
-      }
-      .mt-29 {
-        margin-top: 7.25rem;
-      }
-      .mt-25 {
-        margin-top: 6.25rem;
-      }
-      .py-13 {
-        padding-top: 3.25rem;
-        padding-bottom: 3.25rem;
-      }
-      .w-50 {
-        width: 12.5rem;
-      }
-      .h-30 {
-        height: 7.5rem;
-      }
-      .rounded-4xl {
-        border-radius: 2rem;
-      }
-      @keyframes carousel {
-        from {
-          transform: translateX(0);
-        }
-        to {
-          transform: translateX(-50%);
-        }
-      }
-    </style>
-    <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/responsive.css">
-  </head>
-  <body class="bg-white text-zinc-950">
-    <% if (!['Acesso ao sistema','Criar conta'].includes(title)) { %>
-      <%- include('../partials/header') %>
-    <% } %>
-    <% if (success?.length) { %>
-      <div class="fixed right-6 top-24 z-[70] rounded-md border-l-4 border-emerald-500 bg-white px-4 py-3 text-sm shadow-lg">
-        <%= success[0] %>
-      </div>
-    <% } %>
-    <% if (error?.length) { %>
-      <div class="fixed right-6 top-24 z-[70] rounded-md border-l-4 border-red-500 bg-white px-4 py-3 text-sm shadow-lg">
-        <%= error[0] %>
-      </div>
-    <% } %>
-    <%- body %>
-    <% if (!['Acesso ao sistema','Criar conta'].includes(title)) { %>
-      <%- include('../partials/footer') %>
-    <% } %>
-  </body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            <%= title %>
+            | MMVL Telecon
+        </title>
+        <script src="https://cdn.tailwindcss.com">
+        </script>
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                font-family: Arial,sans-serif;
+            }
+            .mt-29 {
+                margin-top: 7.25rem;
+            }
+            .mt-25 {
+                margin-top: 6.25rem;
+            }
+            .py-13 {
+                padding-top: 3.25rem;
+                padding-bottom: 3.25rem;
+            }
+            .w-50 {
+                width: 12.5rem;
+            }
+            .h-30 {
+                height: 7.5rem;
+            }
+            .rounded-4xl {
+                border-radius: 2rem;
+            }
+            @keyframes carousel {
+                from {
+                    transform: translateX(0);
+                }
+                to {
+                    transform: translateX(-50%);
+                }
+            }
+        </style>
+        <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="/css/responsive.css">
+    </head>
+    <body class="bg-white text-zinc-950">
+        <% if (!['Acesso ao sistema','Criar conta'].includes(title)) { %>
+            <%- include('../partials/header') %>
+        <% } %>
+        <% if (success?.length) { %>
+            <div role="status" data-testid="flash-success" class="fixed right-6 top-24 z-[70] rounded-md border-l-4 border-emerald-500 bg-white px-4 py-3 text-sm shadow-lg">
+                <%= success[0] %>
+            </div>
+        <% } %>
+        <% if (error?.length) { %>
+            <div role="alert" data-testid="flash-error" class="fixed right-6 top-24 z-[70] rounded-md border-l-4 border-red-500 bg-white px-4 py-3 text-sm shadow-lg">
+                <%= error[0] %>
+            </div>
+        <% } %>
+        <%- body %>
+        <% if (!['Acesso ao sistema','Criar conta'].includes(title)) { %>
+            <%- include('../partials/footer') %>
+        <% } %>
+    </body>
 </html>

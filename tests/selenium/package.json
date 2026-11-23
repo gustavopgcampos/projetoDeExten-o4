@@ -1,0 +1,9 @@
+{
+    "name": "mmvl-selenium-tests",
+    "private": true,
+    "version": "1.0.0",
+    "description": "Testes funcionais de navegador separados das dependências da aplicação",
+    "dependencies": {
+        "selenium-webdriver": "^4.27.0"
+    }
+}

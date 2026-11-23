@@ -4,3 +4,5 @@ node_modules/
 .local-db-backup.json
 .env.local-backup
 npm-debug.log*
+.env.selenium
+tests/selenium/artifacts/
