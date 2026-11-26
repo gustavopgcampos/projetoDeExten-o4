@@ -3,8 +3,8 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
-const root = path.join(__dirname, '../tests/selenium');
-const { rowXPath } = require('../tests/selenium/selectors.cjs');
+const root = path.join(__dirname, 'selenium');
+const { rowXPath } = require('./selenium/selectors.cjs');
 
 test('JavaScript enviado ao navegador tem sintaxe válida, inclusive CT22', () => {
     const runner = fs.readFileSync(path.join(root, 'run.cjs'), 'utf8');
@@ -40,7 +40,7 @@ test('casos que precisam da conta COMMON restabelecem o login após o teste de l
 });
 
 test('catálogo de Selenium possui IDs únicos e todos têm implementação', () => {
-    const cases = require('../tests/selenium/cases.json');
+    const cases = require('./selenium/cases.json');
     const runner = fs.readFileSync(path.join(root, 'run.cjs'), 'utf8');
     assert.equal(cases.length, 28);
     assert.equal(new Set(cases.map(c => c.id)).size, cases.length);
@@ -49,14 +49,4 @@ test('catálogo de Selenium possui IDs únicos e todos têm implementação', ()
         assert.ok(runner.includes(`test('${entry.id}'`), entry.id);
     }
     new vm.Script(runner);
-});
-
-test('projeto IDE referencia casos existentes e não contém credenciais reais', () => {
-    const project = JSON.parse(fs.readFileSync(path.join(root, 'mmvl.side'), 'utf8'));
-    const ids = new Set(project.tests.map(t => t.id));
-    assert.equal(ids.size, 11);
-    for (const suite of project.suites) for (const id of suite.tests) assert.ok(ids.has(id));
-    assert.ok(project.tests.every(t => t.commands.some(c => c.command.startsWith('assert'))));
-    const sample = project.tests.flatMap(t => t.commands).find(c => c.command === 'store' && c.value === 'commonPassword');
-    assert.equal(sample.target, 'SUBSTITUIR_SENHA_CONTA_COMMON_TESTE');
 });

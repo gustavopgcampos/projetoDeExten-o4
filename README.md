@@ -147,7 +147,7 @@ O orçamento é gravado em transação, com valores calculados pelo servidor a p
 
 ### Testes funcionais com Selenium
 
-Foi preparada uma suíte WebDriver de 28 casos e um projeto Selenium IDE de 11 casos, alinhados ao material Aula13.pdf. Plano, passos, pré-condições, limpeza e instruções em [docs/selenium-plan.md](docs/selenium-plan.md); casos em [docs/selenium-cases.md](docs/selenium-cases.md); resultados comprovados em [docs/selenium-results.md](docs/selenium-results.md).
+A suíte Selenium WebDriver em JavaScript possui 28 casos automáticos, alinhados ao material Aula13.pdf. Plano, passos, pré-condições, limpeza e instruções em [docs/selenium-plan.md](docs/selenium-plan.md); casos em [docs/selenium-cases.md](docs/selenium-cases.md); resultados comprovados em [docs/selenium-results.md](docs/selenium-results.md).
 
 ```bash
 npm run test:selenium:install
@@ -156,9 +156,9 @@ npm run test:selenium:setup
 npm run test:selenium
 ```
 
-O setup cria uma conta ADMIN exclusiva usando o banco configurado no `.env`. Também é possível preencher `.env.selenium` com uma conta de teste existente. Execução remota requer `SELENIUM_ALLOW_REMOTE=true`. A suíte gera JSON/CSV e screenshots, limpa registros temporários e mantém a conta ADMIN de teste. Importar `tests/selenium/mmvl.side` no Selenium IDE para acompanhar o método da aula.
+O setup cria uma conta ADMIN exclusiva usando o banco configurado no `.env`. Também é possível preencher `.env.selenium` com uma conta de teste existente. Execução remota requer `SELENIUM_ALLOW_REMOTE=true`. A suíte gera JSON/CSV e screenshots, limpa registros temporários e mantém a conta ADMIN de teste.
 
-**Status:** suíte preparada; testes no navegador ainda não aprovados, pois a execução neste ambiente ficou bloqueada. Os comandos abaixo são testes isolados e independem de Selenium.
+**Status:** 28 casos aprovados nas execuções local e no Render registradas em [docs/selenium-results.md](docs/selenium-results.md). Os comandos abaixo são testes isolados e independem de Selenium.
 
 ```bash
 npm test

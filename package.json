@@ -8,9 +8,9 @@
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "test": "node --test test/*.test.js",
-    "test:selenium": "node tests/selenium/run.cjs",
-    "test:selenium:install": "npm install --prefix tests/selenium",
-    "test:selenium:setup": "node tests/selenium/bootstrap.cjs",
+    "test:selenium": "node test/selenium/run.cjs",
+    "test:selenium:install": "npm install --prefix test/selenium",
+    "test:selenium:setup": "node test/selenium/bootstrap.cjs",
     "user:role": "node scripts/set-user-role.js",
     "db:init": "node scripts/init-db.js",
     "db:seed": "node scripts/seed-products.js"
